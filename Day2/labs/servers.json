@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "api-prod-1",
+    "host": "10.0.0.1",
+    "port": 8080,
+    "status": "unknown",
+    "tags": []
+  },
+  {
+    "id": 2,
+    "name": "api-prod-2",
+    "host": "10.0.0.2",
+    "port": 8080,
+    "status": "unknown",
+    "tags": []
+  },
+  {
+    "id": 3,
+    "name": "db-prod",
+    "host": "10.0.0.3",
+    "port": 5432,
+    "status": "unknown",
+    "tags": []
+  }
+]
