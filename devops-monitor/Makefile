@@ -4,7 +4,7 @@ install:
 	pip install -r requirements.txt
 
 test:
-	pytest tests/ -v --cov=api --cov-report=term-missing
+	pytest tests/ -v --cov=api --cov-report=term-missing --cov-fail-under=75
 
 lint:
 	black --check api/ dashboard/ tests/

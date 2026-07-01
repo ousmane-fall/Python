@@ -21,6 +21,9 @@ async def poll_server(server_id: int, url: str, store: dict[int, Server]) -> Ser
 async def run_poll_loop(store: dict[int, Server], interval: int = 10) -> None:
     while True:
         if store:
-            tasks = [poll_server(server_id, server.base_url(), store) for server_id, server in list(store.items())]
+            tasks = [
+                poll_server(server_id, server.base_url(), store)
+                for server_id, server in list(store.items())
+            ]
             await asyncio.gather(*tasks)
         await asyncio.sleep(interval)

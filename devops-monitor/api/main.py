@@ -5,7 +5,7 @@ import json
 import os
 from contextlib import asynccontextmanager
 
-from fastapi import BackgroundTasks, Depends, FastAPI, HTTPException, Query, WebSocket, WebSocketDisconnect
+from fastapi import Depends, FastAPI, HTTPException, Query, WebSocket, WebSocketDisconnect
 
 from api.auth import verify_api_key
 from api.metrics import get_system_metrics

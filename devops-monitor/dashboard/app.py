@@ -72,7 +72,7 @@ with servers_tab:
     if servers:
         df = pd.DataFrame(servers)
 
-        def highlight_row(row):
+        def highlight_row(row):  # noqa: F841
             colors = {
                 "UP": "background-color: #dcfce7",
                 "DEGRADED": "background-color: #fef3c7",
@@ -81,7 +81,9 @@ with servers_tab:
             style = colors.get(row.get("status"), "")
             return [style] * len(row)
 
-        st.dataframe(df.style.apply(highlight_row, axis=1), use_container_width=True, hide_index=True)
+        st.dataframe(
+            df.style.apply(highlight_row, axis=1), use_container_width=True, hide_index=True
+        )
     else:
         st.info("No servers registered yet.")
 
