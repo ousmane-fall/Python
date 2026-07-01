@@ -10,7 +10,9 @@ import streamlit as st
 API_BASE = os.getenv("API_BASE", "http://localhost:8000")
 API_KEY = os.getenv("API_KEY", "dev-secret-key")
 
-st.set_page_config(page_title="DevOps Monitoring Dashboard", page_icon="📡", layout="wide")
+st.set_page_config(
+    page_title="DevOps Monitoring Dashboard", page_icon="📡", layout="wide"
+)
 
 
 @st.cache_data(ttl=2)
@@ -82,7 +84,9 @@ with servers_tab:
             return [style] * len(row)
 
         st.dataframe(
-            df.style.apply(highlight_row, axis=1), use_container_width=True, hide_index=True
+            df.style.apply(highlight_row, axis=1),
+            use_container_width=True,
+            hide_index=True,
         )
     else:
         st.info("No servers registered yet.")
@@ -109,9 +113,13 @@ with servers_tab:
             st.error(f"Error {response.status_code}: {response.text}")
 
     if servers:
-        selected_id = st.selectbox("Select server to check", [server["id"] for server in servers])
+        selected_id = st.selectbox(
+            "Select server to check", [server["id"] for server in servers]
+        )
         if st.button("Run health check"):
-            response = httpx.post(f"{API_BASE}/servers/{selected_id}/check", timeout=5.0)
+            response = httpx.post(
+                f"{API_BASE}/servers/{selected_id}/check", timeout=5.0
+            )
             if response.status_code == 200:
                 fetch_servers.clear()
                 st.success("Health check completed")
